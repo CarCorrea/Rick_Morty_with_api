@@ -4,7 +4,13 @@ const mostrarPersonaje = function(){
     const molde = document.querySelector(".molde-detalle").cloneNode(true);
     molde.querySelector(".nombre-sa-personaje").innerText = personaje.name;
     molde.querySelector(".imagen-sa-personaje").src = personaje.image;
-    molde.querySelector(".estado-sa-personaje").innerText = personaje.status;
+    if(personaje.status ==  "Alive"){
+        molde.querySelector(".estado-sa-personaje").classList.add("fas", "fa-smile", "text-info", "fa-3x");
+    }else if (personaje.status ==  "unknown"){
+        molde.querySelector(".estado-sa-personaje").classList.add("fas", "fa-meh", "text-warning", "fa-3x");
+    }else if (personaje.status ==  "Dead"){
+        molde.querySelector(".estado-sa-personaje").classList.add("fas", "fa-skull", "text-danger", "fa-3x");
+    }
     Swal.fire({
         title: personaje.name,
         html: molde.innerHTML
